@@ -1,0 +1,1833 @@
+XS 
+\\172.24.190.233\Groups\OXE
+
+D:\tools\eclipse-3.4.2-generic\workspace>mvn archetype:generate -DarchetypeCatalog=http://FRCOLSDEV10.fr.alcatel-lucent.com:8080/archiva/repository/enterprise-releases/archetype-catalog.xml
+
+JSON(JavaScript Object Notation) 
+
+copy jar files to:
+D:\ice-xs\jboss-5.1.0.GA\server\default\deploy
+
+unit test(ext_services): com.alcatel_lucent.ice.icm.xs.services.domain.relationwithsipserver;
+
+function test(ext_services): com.alcatel_lucent.ice.icm.xs.services.functionalTests;
+
+component test(icm_services_comp_test): com.alcatel_lucent.qa.ice.icm.xs.services.AutoAnswerTest;
+
+XS log files on server:
+172.24.190.205:/opt/GCTI/Logs/ExtensibleServices_1
+
+
+Q:
+1. how to write a Unit/function test case?
+
+Routing scripts:
+{"1", "Dial(" + Carol_CALLEE_Device + ",45,R)"},
+{"2", "Return(TIMEOUT)"	}
+						
+{"1", "Dial(15022222,,f)"}
+
+{"1", "Dial(177343,,f,t)"},
+						
+{"1", "Forward(4502@alcatel-lucent.fr)"}
+
+{"1", "Hangup(433)"}
+
+{"1", "Fork(0," + CALLEE_NOMADIC_DEVICE + ",0," + CALLEE_REGULAR_DEVICE + ",end,35,R)"},
+{"2", "Return(TIMEOUT)"}
+
+"Dial(13" + EXTERNAL_ENTITY_CALLEE + NOTIMEOUT;
+"Dial(15" + OXE_CALLEE + NOTIMEOUT;
+
+{"1", "PlayApplication(http://localhost/routing-manager/imm-fwd.vxml,R)"},
+
+{"1", "Fork(0," + FORWARD_DUAL_MODE_SIP_DEVICE + ",end,,u[" + TENANT_DUAL_MODE_SWITCHOVER_TIMER 
++ ":" + FORWARD_DUAL_MODE_SIP_DEVICE + ":" + FORWARD_DUAL_MODE_PSTN_DEVICE + "],f)"}
+							
+{"1", "Dial(968161,,a)"}
+
+{"1", "Dial(17VOICEMAIL_343,,R)"}
+
+
+CCNR (Call Completion on No Response).
+
+Dynamic Virtual Assistant (DVA) 
+
+GAS Generic advanced service 					
+
+Hangup(488 - Not acceptable here)
+
+Enterprise SIP Server (ESS)
+
+MS Media Server
+
+Compile and other steps:
+  1. OT_1.2-ExtensibleServices-ServicesIntf
+  2. ExtensibleServices-Services
+  3. ExtensibleServices-XingDelivery_bundle
+  4. ExtensibleServices-ServicesComponents_FunctionnalTests
+  5. ExtensibleServices-ComponentTests-TestSuiteSupport
+  6. ExtensibleServices-Integration-ESSMockup
+  7. ExtensibleServices-PreIntegration-ICEmockup
+
+ClearQuest: WRI --> WRK_Built, CRI --> CRI_InValidation
+
+CBR: contextual behaviour rule
+
+Process of fixing a bug:
+Java code --> UnitTest, Functional test, component test --> ClearCase checkout/in
+--> ClearQuest, CRI(CRI_InIntegration), WRI(WRK_Built) --> Jenkins(7 steps) --> code reviewer 
+-->update a xml file on 233 share folder: \\172.24.190.233\Groups\OXE\Indicator\OXE-ICE Indicators.xls
+		
+1. Mark your code for the modification with this CR id and description. 
+2. Create code review in code collaborator when coding is done.
+3. Put your detailed analysis on clear question on the "analysis" tab.
+4. Add this CR record into our indicator file (\\172.24.190.233\Groups\OXE\Indicator\OXE-ICE Indicators.xls)
+
+
+Jenkins: 
+ExtensibleServices-Services 编译
+X  ExtensibleServices-ServicesComponents_FunctionnalTests
+OT_1.2-ExtensibleServices-ComponentTests-TestSuiteSupport
+ExtensibleServices-Integration-ESSMockup
+ExtensibleServices-PreIntegration-ICEmockup
+						
+Manual test:
+upload and unzip the package to:/opt/GCTI/XS/XS_INT_TEST/release
+
+Login to 172.24.190.205 with Solution Control Interface with:
+UserName: default, Password:password, Application:SCI_1, Host:172.24.190.205, Port:2020
+
+for 80/83, Application:SolutionControlInterface
+
+Login to 172.24.190.205 with Configuration Manager with:
+Username: default, Password: password, default, prot:2020
+
+OXE: OmniPCX Enterprise
+
+OpenTouch Conversation（OTC）
+
+统一通信(UC)和协作软件
+
+Fully Qualified Domain Name
+
+D:\tmp>java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,address="8000" -jar test.jar
+
+
+D:\tmp>java -Xdebug -Xrunjdwp:transport=dt_socket,address=127.0.0.1:8000,suspend=y -jar test.jar
+
+
+#$JAVA_OPTS .= " -Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,address=172.24.191.42:8787,server=y,suspend=n";
+
+
+weekly 32:
+1. openjdk performance
+2. manager, assistant
+
+VHE has red flags, but can still call each other:
+copy the xml files from the OT server 10.10.10.80:/var/data/oamp/cms/DevicesDeployment/dmictouch 
+to the DM server 172.24.190.182:/var/www/html/dmictouch, ictmgr/123456
+
+VNC
+vncserver -geometry 1280x1024 -depth 24:8
+vnc passwd for 190.44(11111111)
+
+
+Upgrade to the new load:
+
+dwl seturl http://172.24.191.139/upgrade_int/R250/hudson/profile_test_unlocked.xml
+http://172.24.191.136/upgrade_int/R250/
+
+Clean DB on VHE:
+rm –rf /var/ICTApplication/*
+rm -rf /config/dm
+reboot
+
+VHE话机不停重启，查看sip data是否可读IE：
+http://172.24.190.182/dmictouch/85050@bicsmain1.ice.com.xml
+chmod 644 85050@bicsmain1.ice.com.xml
+
+TUI Telephony User Interface
+
+weekly 32:
+1. CMS mockup/ file connector
+2. supervision
+3. 64bit openjdk
+
+DaoCbrsProvider have lots of rules
+
+Jekins will run componentTest on 118, which is a windows server
+ExtensibleServices-ComponentTests-TestSuiteSupport
+
+2 failed of 128 tests
+OT_1.2-ExtensibleServices-PreIntegration-ICEmockup
+
+ER = Engineering Request
+
+CBA: Automatic Callback 
+
+overflow = forward 呼转
+
+CBR = high priority contextual behavior rules 
+
+webadmin first startup : node105.ice.com
+
+8770:
+Server Name:localhost:636
+
+User Name: adminnmc
+Password:superuser, superuser1, ....
+
+VHE 界面上 admin 密码：*tx8000# 
+
+FAUST VHE ssh 8770 admin/000000
+
+//show classes in a jar file
+jar tf xxx.jar
+
+AMS:
+#配置
+/opt/Alcatel-Lucent/ecc.properties
+
+/logs/ompinfra/ams/ams.log
+
+#run from Jboss
+/opt/Alcatel-Lucent/oamp/omp/container/jboss-logging-3.0.0.GA.jar
+
+#PS
+/opt/Alcatel-Lucent/platform/jdk/bin/java -server -Dgmf.app.name=OMPInfra_1 -Dgmf.confserv.host=bicsmain3.ice.com -Dgmf.confserv.port=2020 -Decc.applicationName=ompinfra -Decc.logsDir=/opt/Alcatel-Lucent/logs -Decc.path=/opt/Alcatel-Lucent/ecc.properties -server -Xms64M -Xmx256M -XX:MaxPermSize=128M -Dlog4j.configuration=file:log4j.xml -classpath .:./container/jboss-logging-3.0.0.GA.jar:./container/*:./lib/*:./infra:./infra/*:./evsgtw:./evsgtw/lib/*:./ams:./ams/lib/*:./jsc:./jsc/lib/*:./metrics:./metrics/lib/*:./perf:./perf/lib/* com.alu.ice.oamp.jboss.Bootstrap
+
+#ompd would start/stop above jboss
+service ompd start
+
+Maven常用命令： 
+1. 创建Maven的普通java项目： 
+   mvn archetype:create 
+   -DgroupId=packageName 
+   -DartifactId=projectName  
+2. 创建Maven的Web项目：   
+    mvn archetype:create 
+    -DgroupId=packageName    
+    -DartifactId=webappName 
+    -DarchetypeArtifactId=maven-archetype-webapp    
+3. 编译源代码： mvn compile 
+4. 编译测试代码：mvn test-compile    
+5. 运行测试：mvn test   
+6. 产生site：mvn site   
+7. 打包：mvn package   
+8. 在本地Repository中安装jar：mvn install 
+9. 清除产生的项目：mvn clean   
+10. 生成eclipse项目：mvn eclipse:eclipse  
+11. 生成idea项目：mvn idea:idea  
+12. 组合使用goal命令，如只打包不测试：mvn -Dtest package   
+13. 编译测试的内容：mvn test-compile  
+14. 只打jar包: mvn jar:jar  
+15. 只测试而不编译，也不测试编译：mvn test -skipping compile -skipping test-compile 
+      ( -skipping 的灵活运用，当然也可以用于其他组合命令)  
+16. 清除eclipse的一些系统设置:mvn eclipse:clean
+
+CBR: Call Back Request
+CCBS: Call Completion on Busy Subscriber
+CCNR: Call Completion on No Reply
+
+XS.properties
+ps.properties
+
+F0N1: Manager receives the call, Assistant is notified
+F1N1: Manager monitors the calls & Assistant receives them
+F1N0: Manager doesn’t receive the calls & Assistant receives them
+
+
+sips-request-id=
+
+
+xjc abc.xjb
+xjc -d out -b binding.xml your-schema.xsd
+
+licenses replace
+[root@bicsmain1 licenses]# pwd
+/var/data/licenses
+[root@bicsmain1 licenses]# ll
+total 16
+-rwxrwxrwx 1 root root  404 May 20 00:54 alcotuc.lic
+-rw-r--r-- 1 root root 8254 May 20 00:54 bicsmain1.ice.com.ice
+
+
+mount -o loop -t iso9660 ot2.0.000.040.iso /mnt/ice/
+
+reset flash
+
+OXE:
+timout 0
+RUNTEL
+
+vhe root
+boot2System, password: <+-
+
+
+cd /opt/Alcatel-Lucent/oamp/cms/cms.policy
+permission java.net.SocketPermission "*", "connect,resolve";
+--->
+permission java.net.SocketPermission "*", "accept,connect,resolve";
+
+create new maven from a exist jar package
+http://blog.csdn.net/huangyaoshifog/article/details/6092093
+D:\tmp\hpjss-jain>mvn install:install-file -Dfile=hpjss-jain12-java15.jar -DgroupId=com.belllabs.hpjss -DartifactId=hpjss-jain -Dversion=2.0.000.004 -Dpackaging=jar
+D:\tmp\hpjss-sdp>mvn install:install-file -Dfile=hpjss-sdp-java.jar -DgroupId=com.belllabs.hpjss -DartifactId=hpjss-sdp -Dversion=2.0.000.005 -Dpackaging=jar
+
+mvn install:install-file -Dfile=jain-sdp-api-1.0-SNAPSHOT.jar -DgroupId=com.alcatel_lucent.ot.hpjss -DartifactId=jain-sdp-api -Dversion=1.0 -Dpackaging=jar
+
+mvn install:install-file -Dfile=hpjss-sdp-1.0-SNAPSHOT.jar -DgroupId=com.alcatel_lucent.ot.hpjss -DartifactId=hpjss-sdp -Dversion=1.0 -Dpackaging=jar
+
+mvn install:install-file -Dfile=hpjss-ng-1.0-SNAPSHOT.jar -DgroupId=com.alcatel_lucent.ot.hpjss -DartifactId=hpjss-ng -Dversion=1.0 -Dpackaging=jar
+
+root ssh failed, try to modify the file:
+/etc/ssh/sshd_config
+/etc/security/access.conf
+
+psql -U cms_user -p 5433 -h 10.10.8.201 -d CMS
+select * from siptrunk ;
+
+update iceserver SET fqdn='main5_ics.ice.com' where id='151';
+
+[root@bicsmain2 WEB-INF]# pwd
+/opt/Alcatel-Lucent/oamp/webadmin/WebAdmin/WEB-INF
+[root@bicsmain2 WEB-INF]# cat wbm.properties 
+# Maximum row count returned in requests to CMS
+wbm.search.limit=50
+wbm.menu.filterByProductType=false
+[root@bicsmain2 WEB-INF]# 
+
+Install plugin for elasticsearch
+./bin/plugin --url file:/root/elasticsearch-kopf-master.zip -install elasticsearch-kopf
+
+
+8080 was used by others
+netstat -ano
+
+
+psql -U cms_user -p 5433 -d CMS -h 172.25.187.42
+\q
+
+show all tables
+\dt
+
+
+select * from device where directorynumber='501002';
+
+select * from cmsuser where id='42852';
+
+
+/opt/Alcatel-Lucent/platform/postgresql/postgresql_functions
+function function_verifyPghbaLocalIpAddress(){
+        echo $"`date` : function_verifyPghbaLocalIpAddress begin"
+        LOCAL_IP_ADDRESS=`hostname -i`
+        echo $"local    all             all                                             trust" > ${PGHBA_CONF_FILE}
+        echo $"host     all             all             127.0.0.1       255.255.255.255 trust" >> ${PGHBA_CONF_FILE}
+        echo $"host     CMS             cms_user        127.0.0.1       255.255.255.255 trust" >> ${PGHBA_CONF_FILE}
+        echo $"host     all             all             ${LOCAL_IP_ADDRESS}     255.255.255.255 trust" >> ${PGHBA_CONF_FILE}
+        echo $"host     all             htuser          0.0.0.0         0.0.0.0         md5" >> ${PGHBA_CONF_FILE}
+//add two line+
+        echo $"host     CMS             cms_user        0.0.0.0         0.0.0.0         password" >> ${PGHBA_CONF_FILE}
+        echo $"host     all             cms_user        0.0.0.0         0.0.0.0         password" >> ${PGHBA_CONF_FILE}
+//add two line-
+        echo $"`date` : function_verifyPghbaLocalIpAddress end"
+}
+
+
+
+openjdk meeting:
+Join online meeting:
+https://alpha-ics-spb.ru.alcatel-lucent.com:443/call/0170020
+
+meeting dial number:
+x27824412
+6824412
+
+
+[root@bicsmain3 xs]# pwd
+/root/osgi/xs
+[root@bicsmain3 xs]# ./launcher.py -t 10.10.10.88 -v
+
+
+karaf@opentouch>feature:repo-add file:/root/osgi/xs/xs.xml
+feature:repo-add file:/root/osgi/presence.xml
+
+feature:repo-add file:/D:/osgi/xs/data/kar/xs-kar-package-2.2.000.000-SNAPSHOT/com/alcatel_lucent/ice/icm/xs/xs-kar-package/2.2.000.000-SNAPSHOT/xs-kar-package-2.2.000.000-SNAPSHOT-features.xml
+
+feature:repo-add file:/D:/hg/XS/xs_delivery205/icm_services_osgi/xs-kar-package/src/main/resources/features.xml
+
+karaf@opentouch>feature:install -v xs
+
+
+feature:repo-add file:/root/osgi/xs/features.xml
+feature:repo-add file:/root/osgi/xs/test.xml
+
+#on windows
+
+#download from Nexus
+D:\osgi>python opentouch-scripts-11.0.000.013-20150819.221507-28-launcher.zip  -t 10.10.8.71 -p xs -v
+
+karaf@opentouch>feature:repo-add  file:./test.xml
+
+feature:install -v xs
+
+feature:install –v framework
+
+client.bat -h 127.0.0.1 "feature:install -v framework"
+
+after put the kar package to deploy, run the command:
+karaf@opentouch>feature:repo-refresh
+
+#query the config of xs
+config:list "(service.pid=com.alcatel_lucent.ice.icm.xs.services.domain.relationwithsipserver.ServiceXs)"
+
+curl -X POST http://10.10.8.71:8000/extsvc/rest/heartbeat/ -d '{"version":"2.0","operation":{"type":"HEARTBEAT"},"sips-request-id":9202}' -H "Content-type: application/json" -v
+
+
+curl -X POST http://10.10.8.71:8000/extsvc/rest/DeviceDo.php?Method=GetURL&mac=00268bae77cf -d '{"version":"2.0","operation":{"type":"HEARTBEAT"},"sips-request-id":9202}' -H "Content-type: application/json" -v
+
+curl -X POST http://10.10.8.201:8000/extsvc/rest/global/ -d '{"version":"2.1","media":["AUDIO"],"origin":{"uri":"80158@172.25.154.52"},"destination":{"uri":"80052@172.25.154.52"},"operation":{"type":"MAKECALL"},"sips-request-id":1263}' -H "Content-type: application/json" -v
+
+curl -X POST http://172.27.177.22:8000/extsvc/rest/global/ -d '{"version":"2.1","media":["AUDIO"],"origin":{"uri":"1599902@172.27.177.22"},"destination":{"uri":"btrinite@ekiga.net"},"operation":{"type":"MAKECALL"},"sips-request-id":1263}' -H "Content-type: application/json" -v
+
+curl -X POST http://10.10.10.88:8000/extsvc/rest/dumpAllUsers -d '{"dn":"dn","domain":"domain","key":"key"}' -H "Content-type: application/json" -v
+
+curl -X GET http://135.251.222.38/rps/DeviceDo.php?Method=GetURL"&"mac=00268bae77cf
+
+[root@bicsmain3 osgi]# python opentouch-scripts-launcher.zip -v -p /root/osgi/xs --deploy xs-kar-package-11.0.000.000-SNAPSHOT.kar
+
+python launcher --release --archive ...opentouch-osgi.xxx.zip –p /root/osgi/xs –v 
+
+python opentouch-scripts-11.0.000.004-20150603.073055-4-launcher.zip --release --archive opentouch-osgi-11.0.000.001-ot-11.0.001.003.b0001.zip  -p /root/osgi/xs -v --deploy xs-kar-package-11.0.000.014-SNAPSHOT.kar 
+
+python opentouch-scripts-11.0.000.004-20150603.073055-4-launcher.zip -p /root/osgi/xs -v
+
+bundle:install file:/root/osgi/ServicesIntf-11.0.000.023-SNAPSHOT.jar
+bundle:start 223
+
+grep -rsni "{\"version\":\"2.1" SIPServer.log
+
+google, vnc
+vftcom.pqa-collab.fr.alctel-lucent.com (172.27.177.22) Login :
+root Password : letacla2014.
+
+
+check the size of a folder on linux:
+du -h root
+
+du -m > size.txt
+
+df -lh
+
+
+
+-Dorg.ops4j.pax.logging.DefaultServiceLog.level=ERROR
+
+mvn -U -P!ice-1.0-UNSTABLE,ot-11.0-DEV clean deploy
+-Pdeploy
+
+jconsole failed to connect a process id:
+-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false 
+
+#my proxy
+service squid restart
+
+172.25.58.211 13128
+
+135.251.235.16:8080
+192.168.255.49:8080
+192.168.254.49:8080
+
+http://dns1.dc.ale-international.com/proxy.pac
+
+ALE_GUEST luoyi01/luoyi01
+
+
+office DNS:
+10.67.0.254
+135.251.38.218
+
+mvn archetype:generate -DgroupId=com.alcatel_lucent.ice.icm.rps.services -DartifactId=RpsManager -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
+//ALE proxy
+proxy 135.251.235.16:8080
+
+//jim proxy
+135.251.235.16：8080
+注意需要在bypass里面加
+172*;135*;localhost
+
+
+//clear tool
+shilongh/qwe123!@#
+
+//create view
+ct mkview -tag shilongh_noe_shrd010_view -stgloc noe_views
+
+//lsview
+ct lsview |grep shilongh
+
+//set view
+ct setview shilongh_noe_shrd010_view
+
+//source code are:
+/vobs/noe_ip
+
+//show which view you are
+ct pwv
+
+//start gui of clear tool
+xct
+
+//show history view tree of a file
+ct lsvtree -g *.c
+ct lshist -last 5 epttone.c
+vimdiff ".../7" ".../6"
+gvimdiff ".../7" ".../6"
+
+//config spec
+/misc/noe_data/config_spec
+
+//compile noe2g result
+/vobs/noe_ip/build/mipsobj_applG/dat40x8G
+/vobs/noe_ip/build/mipsobj_applG/noe40x8Ge
+
+//phone go into tftp settings button
+#+i
+
+//phone IP address
+10.4.0.140
+
+//router
+10.4.0.1
+
+
+//tftp server by medusa
+172.24.190.223 6969
+
+//OXE server, CPU1/2
+30.1.107.8
+30.1.62.12
+mtcl/mtcl
+
+//OXE command
+f1 进入
+f2 返回
+enter 选中
+esc 退出至首页
+ctrl+c cancel
+ctrl+v save
+
+//open the telnet access from OXE server "1602" is the number of the phone
+oxe6212> ippstat telnet d 1602 t 1440
+
+
+//phone command after telnet or serial connection
+reset	//reboot the phone
+echo on/off		//print on the console
+help
+id full
+config tftp 172.24.190.223 6969
+config tftp 30.1.62.12 69
+dwl set server 10.10.6.130	//set dwl get file from my tftp server
+dwl go f
+dwl go sipc
+ping
+config // show the configuration of the phone, ip, oxe, etc
+config boot n  ******disable auto update
+config boot f  ******enable auto update
+
+//switch the phone mode
+appl
+appl mode noe/sip
+
+//button
+i + 1 + 3 + 8
+
+
+//show all model
+level
+level PHY/AUDIO debug/normal
+level help
+
+//on phone command
+hpy getreg lan/pc dec/shijingzhi
+
+
+//view the binary of the noe ip/3g/sip/etc， 反编译
+/vobs/noe_pcd_delivery/host/sun4-solaris2/bin/objdumpmips -D /users/noe_3g/delivery/sip/R2.2/BCD-V3.30.91N/appl.elf > appl.asm
+/users/noe_ip/delivery/R7.1
+/users/noe_3g/delivery
+/users/noe_3g/delivery/sip
+
+//only 172.24.190.202 have the hg command/software insatall
+
+//xiaoguang noe3g r220
+/users/xiaoguay/NOE3G/R220/noe3g_sip_debug
+
+//dwl unkonw for release phone
+config boot f
+use an unlock version
+
+//update from release to unlock failed, a == always
+config init_mode a
+config boot f
+reset
+
+//noesip, noe3gsip, noe3g_sip, noe3g-sip
+dwl go sipc
+
+
+
+(912)noe_oxe_v7101> timout -
+timout disabled.
+
+(912)noe_oxe_v7101> cat /usr3/mao/lanpbx.cfg
+TYPE=A4400 VERSION=1 IP_DOWNLOAD=30.1.107.2 IP_CPU1=30.1.107.2 IP_BT_CS=30.1.107.4
+
+
+main cpu //startnoe
+phy addr	//register
+tftp addr 	//lanpbx.cfg
+
+*57	//logoff softkey personal
+*58	//logon softkey personal
+
+//noe user create
+Set Function +: Default==Desk Sharing Set(DSS)
+Desk Sharing User(DSU)
+
+//connect noe sip phone to OT after device&user were created
+sipdwl https 172.24.190.51 443 /DM/dmictouch
+sipdwl
+sipdwl tftp
+
+/root/dmictouch/sipconfig-00809fda58a7.txt
+
+OXO server
+30.1.1.150
+
+OT server
+172.24.190.51/52
+30.1.202.41 ice/qwe123!@#
+
+OXO voice mail password: 161616/131313
+OXO voice mail no: 840/
+
+ct co -nc binary_appl.c	//-nc no comment
+ct lscheckout|grep shilongh
+ct lsco -recurse -me -cview
+ct lsco -recurse -cview
+ct lsco -cview -me -avobs
+ct ci abc.c 123.c 456.c
+ct ci -nc abc.c // -nc no comment
+ct uncheckout/unco abc.c
+
+cleartool mkdir -c comment new_dir
+cleartool mkelem -c comment new_file.cpp
+
+xct 
+
+https://blog.csdn.net/zjpangxie/article/details/2200365
+
+//build R100
+./build -t boot -e mips -gigabit
+./build -t appl -e mips -gigabit
+./build -t appl -e mips -gigabit -release
+cp mipsobj_applN/dat80x8N ~/r100/dat8068N 
+cp mipsobj_applN/noe80x8Ne ~/r100/noe8068N
+
+dwl set L10N chi-40x8
+dwl go L10N
+
+
+on OXE:
+timout -
+cd ../downbin/
+
+ftp 30.1.107.8(OXE IP)
+ftp>bin	//二进制下载
+ftp>get chi-40x8/4068
+
+char target = '\0';
+debug("BCOMPAT: target = %c", target);
+
+//build TDM
+Cd /vobs/noe_ua/build
+./build B ALL
+./build B ALL clean
+cp noe_ua_bc_data.dhs ~/tdm/data80x9
+cp noe_ua_bc_soft.dhs ~/tdm/bin80x9
+
+scp ~/tdm/* shilongh@10.10.6.141:/cygdrive/d/
+scp * shilongh@10.10.6.141:/cygdrive/d/ct/noe2g/tdm3g/noe_ua/mod/keyboard/
+scp ~/tdm/* shilongh@135.251.222.121:/cygdrive/d/
+scp ~/tdm/*80x9 shilongh@135.251.222.121:/cygdrive/d/
+scp * shilongh@135.251.222.121:/cygdrive/d/ct/noe2g/tdm3g/noe_shared/mod/keyboard/
+scp * shilongh@135.251.222.121:/cygdrive/d/ct/noe2g/tdm3g/noe_ua/mod
+
+//to make the tdm set go to it's older version
+'#'  added with command flash format soft
+flash format soft
+
+/DHS3bin/downbin
+/usr2/downbin
+adwl set disable/enable
+reset
+
+//TDM offical version
+/users/noe_ua/delivery-3G/R100/BC-V4.01.32
+
+
+gcc -Wall test.c -o test
+//memery check on linux(136)
+valgrind --tool=memcheck --leak-check=full ./test
+
+
+//windows path/file/floder in 8.3 format
+进入cmd  输入dir /x d:\
+
+sh-4.3$ mount C:/PROGRA~1/DEBUGG~1 /opt/windbg
+
+sh ./configure --host x86_64-w64-mingw32 --enable-only64bit
+
+\\172.24.190.233\Groups\PQA\Tx_Val\Projects\IC touch\OXO\R2.2
+//OXO OMC password
+Pbxk1064
+
+//OXO 临时激活 允许新话机注册
+OMC---->分机、基站列表---->Auto Provision---->临时激活
+
+//get OXE logs
+//find the neqt domain by the NOE phone number
+eqstat d 6632
+
+//clear the old traces
+tuner clear-traces
+
+//filter only for neqt 445
+tuner xtr,445 tr,445 at,445
+tuner xtr,447 tr,447 at,447
+
+//config
+actdbg all=off
+actdbg fct=on he=on noe=on sec_cpu=on sec_cpu=on
+
+//tracer start
+mtracer
+
+
+//android study
+allprojects {
+    repositories {
+        maven  {
+            url "http://repository.all.alcatel-lucent.com/nexus/content/groups/reference-cache/"
+        }
+        //jcenter()
+    }
+}
+
+
+
+//8018
+Prepare:
+Step 1: clone all sourcecode on /localdisk/working/${USER}/8018/hg/
+Step 2: cd /localdisk/working/${USER}/8018/hg/8018_tools
+      bin/instantiate personal target SHA 8018
+      bin/instantiate personal target SHA 8008
+      bin/instantiate personal target SHA 80x8ee
+      bin/instantiate personal host SHA 8008
+      bin/instantiate PERSONAL TARGET SHA_PRO8008 80x8ee
+      bin/instantiate PERSONAL TARGET SHA_PRO8008 8018
+      bin/instantiate PERSONAL TARGET SHA_PRO8008 8008
+
+Then cd /localdisk/working/${USER}/8018/hg/8018_platform
+         source /localdisk/working/${USER}/8018/hg/8018_tools/config/setenv.sh
+    make all
+
+// build result    
+/localdisk/working/shilongh/8008/tmp/noe/8008
+
+cd ../hg/
+hg clone https://terminals-hg.fr.alcatel-lucent.com/8018_platform -b 80x8ee_NOE_R410_TR
+hg clone https://terminals-hg.fr.alcatel-lucent.com/8018_tools -b 80x8ee_NOE_R310_TR
+hg clone https://terminals-hg.fr.alcatel-lucent.com/8018_nexgen -b 80x8ee_NOE_R310_TR
+hg clone https://terminals-hg.fr.alcatel-lucent.com/8018_qt5_webkit -b 80x8ee_NOE_R310_TR
+hg clone https://terminals-hg.fr.alcatel-lucent.com/8018_application -b 80x8ee_NOE_R310_TR
+
+hg clone https://terminals-hg.fr.alcatel-lucent.com/8018_tools -b 80x8ee_NOE_R400_TR
+
+hg clone https://terminals-hg.fr.alcatel-lucent.com/8018_tools -b 80x8ee_NOE_R410_TR
+
+hg clone https://terminals-hg.fr.alcatel-lucent.com/BT -b 80x8ee_NOE_R410_TR
+
+hg clone https://terminals-hg.fr.alcatel-lucent.com/8018_platform -b 80x8ee_NOE_R500_TR
+hg clone https://terminals-hg.fr.alcatel-lucent.com/8018_tools -b 80x8ee_NOE_R500_TR
+hg clone https://terminals-hg.fr.alcatel-lucent.com/8018_nexgen -b 80x8ee_NOE_R500_TR
+hg clone https://terminals-hg.fr.alcatel-lucent.com/8018_qt5_webkit -b 80x8ee_NOE_R500_TR
+hg clone https://terminals-hg.fr.alcatel-lucent.com/8018_application -b 80x8ee_NOE_R500_TR
+hg clone https://terminals-hg.fr.alcatel-lucent.com/BT -b 80x8ee_NOE_R500_TR
+
+//show all bookmarks and which the current one is *
+[shilongh@shrdlx32 8018_application]$hg bookmarks
+[8018_platform] $ hg update --clean --rev BOOKMARK_80x8ee_NOE_R500_5_40_20
+
+cd 8018_platform
+hg update <branchName> //update to a branch
+hg commit
+hg pull/update 
+hg megre/commit
+hg push
+
+hg commit -m "[8008] missing languages resource files" resources.spec
+hg push
+
+
+hg status //show all the changed files
+hg revert	//uncheckout 
+
+8018:phone ip range:
+10.10.6.130~139
+admin/*tx8000#	//locked version
+root/root				//developer version
+
+//how to build a 8018_R200_TR
+cd 8018_platform
+hg update 8018_R200_TR
+hg pull
+
+cd 8018_tools
+bin/instantiate personal target SHA 8018
+./bin/instantiate PERSONAL target SHA export_version 8008
+source config/setenv.sh
+make check
+make tools
+
+cd 8018_platform
+make all
+make build-all
+make sdk
+
+//编译qt 总是报remote_get_id 错误， 执行以下命令(add 172.24.190.44 to known_hosts)
+remote_get.sh: !!! failed (6) !!!
+[shilongh@shrdlx32 8018_qt5_webkit]$ssh ictmgr@172.24.190.44
+
+//tftp local directory on 172.24.190.44, where daily build saved
+/localdisk/tftp
+
+
+编noemmi：
+#8018_application
+#make all
+
+#8018_application/application/noemmi
+#../../script/ictouch_build.sh –target
+
+//replace noemmi
+# /etc/init.d/applicationManager stop
+[shilongh@shrdlx32 bin]$pwd
+/localdisk/working/shilongh/8008/hg/8018_application/application/noemmi/bin
+[shilongh@shrdlx32 bin]$ls
+noemmi  noemmi.dbg  noemmi.notstripped
+[shilongh@shrdlx32 bin]$scp bin/noemmi root@10.10.6.146:/usr/lib/ICTApplication/
+root@10.10.6.145's password: 
+
+//noemmi can be start directly
+# /usr/lib/ICTApplication/noemmi 
+
+//编ictaudio
+pwd
+/localdisk/working/shilongh/8008/hg/8018_application/application/ictaudio
+make all
+# /etc/init.d/applicationManager stop
+[shilongh@shrdlx32 bin]$scp bin/ictaudio root@10.10.6.145:/usr/lib/ICTApplication/ictaudio
+root@10.10.6.145's password: 
+
+Get daily build version的server：
+172.24.191.137 
+
+//create a new system.tar.bz2 in platform_build/ale_download/system.tar.bz2
+/localdisk/working/shilongh/8008/hg/8018_platform/make distclean
+/localdisk/working/shilongh/8008/hg/8018_platform/make build-all
+
+
+//如果只有平台，没有application，（ps 进程没有5个主要程序）
+//to generate 8018bin, 8018header, etc
+cd /localdisk/working/shilongh/8008/tmp/noe/8008/target/application
+/localdisk/working/shilongh/8008/hg/8018_tools/bin/make_8018_rootfs.sh -plttar /localdisk/working/shilongh/8008/hg/8018_platform/platform_build/ale_download/system.tar.bz2 -rpmdir /localdisk/working/shilongh/8008/tmp/noe/8008/target/application/rpms -rpmdir /localdisk/working/shilongh/8008/tmp/noe/8008/target/qt5.2.1/rpms
+cp /localdisk/working/shilongh/8008/tmp/noe/8008/target/application/system.tar.bz2 /localdisk/working/shilongh/8008/hg/8018_platform/platform_build/ale_download/noe.debug.tar.xz
+cp /localdisk/working/shilongh/8008/tmp/noe/8008/target/application/system.tar.bz2 /localdisk/working/shilongh/8008/hg/8018_platform/platform_build/ale_download/noe.release.tar.xz
+cp /localdisk/working/shilongh/8008/tmp/noe/8008/target/application/system.tar.bz2 /localdisk/working/shilongh/8008/hg/8018_platform/platform_build/ale_download/
+[shilongh@shrdlx32 ale_download]$ln -s system.tar.bz2 noe.release.tar.xz
+[shilongh@shrdlx32 ale_download]$ln -s system.tar.bz2 noe.debug.tar.xz
+[shilongh@shrdlx32 ale_download]$ln -s 8008/noe-sip.tar.bz2 noe-sip.tar.bz2
+
+
+//8018's IP address
+cat /config/local/enet.cfg
+
+# cat /config/local/enet.cfg 
+ENETCFG_DHCP_MODE="Static"
+ENETCFG_IPADDR="10.10.6.136"
+ENETCFG_SUBNET="255.255.255.0"
+ENETCFG_ROUTER="10.10.6.1"
+ENETCFG_NOE_TFTP0_ADDR="10.10.6.134"
+ENETCFG_NOE_TFTP2_ADDR="255.255.255.255"
+
+
+
+
+//dynamic
+# cat enet.cfg
+ENETCFG_DHCP_IPADDR_SURVI="10.10.6.134"
+ENETCFG_DHCP_SURVIVABILITY_PARAM="true"
+
+
+
+//update 8018.ecc
+Sub Main
+	crt.Screen.Send "setenv ethaddr 00:80:9f:ec:b5:f5" & chr(13)
+	crt.Screen.WaitForString "DVF99 # "
+	crt.Screen.Send "setenv ipaddr 10.10.6.135" & chr(13)
+	crt.Screen.WaitForString "DVF99 # "
+	crt.Screen.Send "setenv gatewayip 10.10.6.1" & chr(13)
+	crt.Screen.WaitForString "DVF99 # "
+	crt.Screen.Send "setenv serverip 172.24.190.44" & chr(13)
+	crt.Screen.Send "setenv serverip 10.10.6.130" & chr(13)
+	crt.Screen.WaitForString "DVF99 # "
+	crt.Screen.Send "setenv loadaddr 0x41100000" & chr(13)
+	crt.Screen.WaitForString "DVF99 # "
+	crt.Screen.Send "saveenv" & chr(13)
+	crt.Screen.WaitForString "DVF99 # "
+	crt.Screen.Send chr(13)
+	crt.Screen.WaitForString "DVF99 # "
+	crt.Screen.Send "nand erase.chip" & chr(13)
+	crt.Screen.WaitForString "DVF99 # "
+	crt.Screen.Send "tftpflash 0x41100000 /shilongh/8018.ecc" & chr(13)
+	DVF99 # tftpflash 0x41100000 8008.ecc
+	crt.Screen.WaitForString "DVF99 # "
+	crt.Screen.Send chr(13)
+End Sub
+
+//等同用针
+nand erase.chip
+
+//mtd0 = uboot(1m), mtd1=filesystem/ubi(255m)
+root@dvf99:~# flash_erase /dev/mtd0 0 8
+
+//如果，flash坏块太多空间不足
+DVF99 # nand scrub.chip 
+DVF99 # nand help
+
+
+
+//flash_erase
+flash_erase /dev/mtd0 4 8
+
+[DEBUG]# mac set 00:80:9f:ec:b5:f6
+[DEBUG]# shell sh
+set ipaddress
+//unlock
+.unlock root true/false
+/etc/unlock/root
+exit shell sh
+[DEBUG]# industrial off
+[DEBUG]# reset
+
+//8008G industrial settings
+root@dvf99:/# fabconfig -h
+
+============================
+
+Due to I will be one day leave at Monday, please Shilong following bellow steps to do binary signature and ecc generation.
+
+login 172.24.191.137 with ictmgr/qwe123!@#
+binary sign:
+cd /misc/8008_shared/daily/release/noe/8008/target/R410/5.35.12/2580/flash/ale_download/upgrade/tosign/release/
+Firstly, ask YangBing help signed the binary “bin8008N-tosign.exe” and “noe8008N-tosign.exe” on this folder and copy back the signed result to this folder again.
+secondly, run command:
+export JOB_NAME=NOE_80x8ee_Support_Daily_builds_All_8008
+source /localdisk/working/jenkins/slave/workspace/NOE_80x8ee_Support_Daily_builds_All_8008/8018_tools/config/setenv.sh
+/misc/8008_shared/release/8008/NOE-R410/8008_R400_sign.sh R410.5.35.12.2580-HF
+Then, the signed binary located at: /misc/8008_shared/release/8008/NOE-R410/R410.5.35.12.2580-HF
+
+ecc generate:
+Replace sip.debug.tar.xz and sip.release.tar.xz on folder “/misc/8008_shared/daily/release/noe/8008/target/R410/5.35.12/2580/flash/ale_download/8008/” with new one from sip3f
+
+also replace noe-sip.tar.bz2(from Sercomm) on folder “/misc/8008_shared/daily/release/noe/8008/target/R410/5.35.12/2580/flash/ale_download/8008/”
+
+cd /misc/8008_shared/daily/release/noe/8008/target/R410/5.35.12/2580/flash/ale_download
+export JOB_NAME=NOE_80x8ee_Support_Daily_builds_All_8008
+export JOB_NAME=NOE_80x8ee_Support_Daily_builds_All_8018
+export JOB_NAME=NOE_80x8ee_Support_Daily_builds_All
+source /localdisk/working/jenkins/slave/workspace/NOE_80x8ee_Support_Daily_builds_All_8008/8018_tools/config/setenv.sh (137)
+source /localdisk/working/jenkins/slave/workspace/NOE_80x8ee_Support_Daily_builds_All_8018/8018_tools/config/setenv.sh (137)
+source /localdisk/working/jenkins/slave/workspace/NOE_80x8ee_Support_Daily_builds_All/8018_tools/config/setenv.sh (159)
+make ecc
+
+BR
+Jerry
+
+
+============================
+
+
+
+//generate *.ecc file
+[shilongh@shrdlx32 ale_download]$pwd
+/localdisk/working/shilongh/8008/hg/8018_platform/platform_build/ale_download
+[shilongh@shrdlx32 ale_download]$ls 
+8008  80x8ee  bootloader.debug.img    config  flashxbin  ini   Makefile  noe.debug.tar.xz    noe-sip.tar.bz2  README.ubi      tmp
+8018  bin     bootloader.release.img  data    infos      keys  noe       noe.release.tar.xz  README.flash     system.tar.bz2  usr
+[shilongh@shrdlx32 ale_download]$
+
+make clean/distclean
+
+make build-all could generate bootastic.xbin and u-boot.xbin
+[shilongh@shrdlx32 ale_download]$ls flashxbin/                                                          
+bootastic.xbin  u-boot.xbin
+[shilongh@shrdlx32 ale_download]$cp system.tar.bz2 noe.release.tar.xz
+[shilongh@shrdlx32 ale_download]$cp system.tar.bz2 noe.debug.tar.xz                                     
+[shilongh@shrdlx32 ale_download]$cp 8008/noe-sip.tar.bz2 ./                                             
+[shilongh@shrdlx32 ale_download]$source /localdisk/working/shilongh/8008/hg/8018_tools/config/setenv.sh 
+Config: PERSONAL SHA 8008 TARGET EXPORT_VERSION
+Generated at: 2017-01-20 15:49
+Color set
+[shilongh@shrdlx32 ale_download]$make ecc
+
+//generate bin8008N, noe8008N
+[shilongh@shrdlx32 ale_download]$make upgrade
+[shilongh@shrdlx32 ale_download]$make upgrade.clean
+
+8018_platform/platform_build#$make_vhe_module bootloader.distclean
+8018_platform/platform_build#$make_vhe_module bootloader.rebuild
+[shilongh@shrdlx32 bootastic]$pwd
+/localdisk/working/shilongh/8008/hg/8018_platform/platform_build/build/bootloader-1.2.8-rc5/src/bootastic
+[shilongh@shrdlx32 bootastic]$ll *.xbin
+-rw-r--r-- 1 shilongh dect  50616 Apr 28 10:44 bootastic.xbin
+-rw-r--r-- 1 shilongh dect 469176 Apr 28 10:44 u-boot.xbin
+
+[shilongh@shrdlx32 platform_build]$make_vhe_module strongswan.distclean
+[shilongh@shrdlx32 platform_build]$make_vhe_module strongswan.rebuild
+
+//to build a linux kernal in 8018_platform/platform_build/build/linux-windriver-3.4-r0
+/localdisk/working/shilongh/8008/hg/8018_platform/platform_build#make_vhe_module linux-windriver.distclean; make_vhe_module linux-windriver.patch
+
+//set mac address
+# mount -o rw,remount /config-fab/
+# 
+# vi /config-fab/fabconfig/macaddr
+00:80:9f:ec:b5:e8
+
+[shilongh@shrdlx32 ale_download]$ln -s system.tar.bz2 noe.release.tar.xz
+[shilongh@shrdlx32 ale_download]$ln -s system.tar.bz2 noe.debug.tar.xz
+[shilongh@shrdlx32 ale_download]$ln -s 8008/noe-sip.tar.bz2 noe-sip.tar.bz2
+
+//make upgrarde would generate 4 bin8018 files(8018_platform\platform_build\ale_download\upgrade\unsigned) for "dwl go f" to upgrade 8008
+8018_platform/platform_build/ale_download#make upgrade
+
+
+mkdir -pv xx/xx2/xx3/xx4
+
+su ubuntu/qwe123!@#
+
+用户目录，公共目录：
+\\172.24.190.19\shrdlx08_vol1
+
+\\172.24.190.44\shilongh
+
+1.	Linux kernel patch
+1>	拷贝已有的文件到一个目录.orig 目录：
+$mkdir /localdisk/working/hzhou013/8018/patch/linux.orig/drivers/staging/dspg/coma/ -p
+$cd 8018_platform/platform_build
+$cp ./build/linux-windriver-3.4-r0/linux/drivers/staging/dspg/coma/* /localdisk/working/hzhou013/8018/patch/linux.orig/drivers/staging/dspg/coma/
+2>	拷贝SDK中的文件到另一个目录.new目录：
+$mkdir /localdisk/working/hzhou013/8018/patch/linux.new/drivers/staging/dspg/coma/ -p
+$cd /8018/DSPG/SDK134-1-22June-2016/Src
+$cp ./linux/drivers/staging/dspg/coma/* /localdisk/working/hzhou013/8018/patch/linux.new/drivers/staging/dspg/coma/
+3>	比较并生成 patch file
+$cd /localdisk/working/hzhou013/8018/patch
+$meld linux.orig/ linux.new/
+
+删除meta目录，.git相关
+
+diff -Naur linux.orig linux.new > sercom_BSP.patch
+diff -Nur linux.orig linux > sercom_BSP.patch
+4>	拷贝patch file到编译的目录
+$cd 8018_platform/ale-platform-8018-system/recipes-dist/linux/linux-windriver/patches/
+$cp /localdisk/working/hzhou013/8018/patch/linux.patch ./dsgp-linux-staging-coma-sdk134.patch
+
+
+git diff --no-prefix pseudo-1.9.0 pseudo-1.9.0.new > my_pseudo.patch
+
+
+5>	将patch添加到bb file中，编译patch并验证
+$cd 8018_platform/ale-platform-8018-system/recipes-dist/linux/
+$gvim linux-windriver_3.4.bbappend
+Add line “file://patches/dsgp-linux-staging-coma-sdk134.patch \”  in .bbappend file
+$cd 8018_platform/platform_build
+$make -C build linux-windriver.patch
+$make –C build linux-windriver.rebuild
+
+make_vhe_module linux-windriver.distclean; make_vhe_module linux-windriver.patch
+
+6>	编译8018_platform
+$cd 8018_platform
+$source ../8018_tools/config/setenv.sh
+$make all  / make build-all
+7>	更新话机上的kernal部分
+Kernel部分直接把platform_build/build/linux-windriver-3.4-r0/ image/boot/ uImage-3.4.91-rt56-WR5.0.1_preempt-rt 替换到话机/boot下的文件，重启就可以了
+run sync before reboot the phone
+
+$rpm -qpl dspg_dvf99/kernel-modules-3.4-r0.dspg_dvf99.rpm
+
+platform_build/build/linux-windriver-3.4-r0/packages-split/kernel-modules
+/localdisk/working/shilongh/8018/hg/8018_platform/platform_build/build/linux-windriver-3.4-r0/deploy-rpms/dspg_dvf99
+
+/localdisk/working/jerryzh/8018/hg/8018_platform/ale-platform/recipes-dist/lib-marvell/files/src/switch/sample/Initialization/switchcfg.c 
+/localdisk/working/jerryzh/8008/hg/8018_platform/ale-platform/recipes-dist/eth/files/fs/usr/sbin/switchcfg
+
+
+# ls /usr/bin/ICTApplication/
+ApplicationManager  ICTCliGateLite
+# ls /usr/lib/ICTApplication/
+LoggerModule     Platform         SettingsManager  ictaudio         migration/       noemmi
+
+//查看rpm包内容
+rpm -qpl /localdisk/working/shilongh/8008/tmp/noe/8008/target/application/rpms/noemmi-0.0-8008-R100_4.80.00.1_8008_shilongh.armv5te.rpm |grep uadec
+
+//8018 startup script
+# sh -x /etc/rc.d/S31network.init start
+
+//log config
+cat /etc/syslog-ng/syslog-ng.conf 
+
+/etc/init.d/log  restart
+
+//where store
+/var/log/*.log
+level=info,err,debug,notice,
+
+level noemmi debug
+
+//upgrade script & source
+8018_platform\ale-platform-8018-system\recipes-dist\upgrade\files\fs\usr\sbin
+8018_platform\ale-platform-8018-system\recipes-dist\upgrade\files\src\check
+
+//after noe-8008N updated, you can run to switch to new version
+verswitch
+
+%{buildroot}%{ICT_LIBRARIES_PATH}=/usr/lib
+%{buildroot}%{ICT_BINARIES_PATH}=/usr/lib/ICTApplication
+%{buildroot}%{ICT_CONFIGURATIONS_PATH}=/etc/ICTApplication/module
+%{_topdir}/BUILD/cliscripts=8018_application/application/ictaudio/cliscripts
+%{_topdir}/BUILD/bin/=tmp/noe/8008/target/application/application/ictaudio/bin
+$BINPATH/=/usr/sbin
+
+rm $lockFile > /dev/null 2>&1
+
+//to get a path's all names
+path_elem=`pwd | tr '/' ' '`
+
+8008/8018 进入noemmi，第二步，依次按*， #；密码：111111/000000
+
+//startup image replace:
+D:\hg\8018\8018\8018_application\resources\repository\image.png\B
+/usr/share/resources/image.png/B
+
+//welcome image is a 数组coverted from wecome.png
+/localdisk/working/jerryzh/8008/hg/8018_platform/ale-platform-8018-bootloader/recipes-dist/bootloader-1.2.8-rc5/files/src/u-boot/board/dspg/ALE8008/boot_logo.c
+
+//step1 数组
+/localdisk/working/jerryzh/8008/hg/8018_platform/ale-platform/recipes-dist/lcdcmd/files/B_img_step1.c
+
+//show a picture
+ lcdcmd step_1
+ lcdcmd logo
+
+//png to bmp
+pngtopnm img_b_startup_0.png | ppmquant 31 | ppmtobmp -bpp 8 > logo.bmp
+
+//Then cover the logo.bmp by the tool Image2Lcd
+//Image2Lcd png
+https://www.cr173.com/soft/43222.html
+
+[shilongh@shrdlx32 platform_build]$pwd
+/localdisk/working/shilongh/8008/hg/8018_platform/platform_build
+make_vhe_module bootloader.distclean
+make_vhe_module bootloader/bootloader.release/
+
+make_vhe_module lcdcmd.distclean
+make_vhe_module lcdcmd/lcdcmd.release/
+
+make -C build minikbdd.distclean
+make -C build minikbdd  
+make -C buildlcdcmd.release
+
+make_vhe_module lib-settings.distclean
+make_vhe_module lib-settings/lib-settings.release
+
+make -C build linux-windriver.dictclean
+make -C build linux-windriver.rebuild
+
+[bootloader] and [lcdcmd] and etc are in the build directory.
+
+
+
+1、查看一个文件属于哪个rpm包：
+rpm -qf /path/filename    
+2、未安装过的软件包：
+rpm -qlp rpm-filename.rpm
+3、安装过的软件包：           
+rpm -ql packet-name
+
+//8008 set Set MAC(from sercomm/noe-sip partition): 
+#fabconfig macaddr XX:XX:XX:XX:XX:XX 
+Change partition: 
+#fabconfig boot_party NOE 
+
+
+[shilongh@shrdlx32 8018_platform]$find ale-platform* -type f|xargs grep phonemodel
+
+# CLISettings listname | grep MODEL
+FAB_PHONE_MODEL
+PHONE_MODEL
+# CLISettings get CURRENT FAB_PHONE_MODEL
+8008
+# CLISettings get CURRENT PHONE_MODEL
+8008
+
+
+//arm_gdb
+//where the core.ictaudio.gz store? 
+# pwd
+/data/core
+# ls
+core.ictaudio.gz
+core.mmi.gz
+
+gzip -d *.gz
+
+//how to use arm_gdb on server44, *.notstripped would output more details
+arm_gdb 8018_application/application/noemmi/bin/ictaudio.notstripped core.ictaudio
+arm_gdb ictsipua core.ictsipua
+arm_gdb mmi core.mmi
+arm_gdb dispevt core.dispevt
+
+
+
+//output
+Core was generated by `/usr/lib/ICTApplication/ictaudio --moduleName=ictaudio'.
+Program terminated with signal 11, Segmentation fault.
+#0  0xb6337dcc in ?? ()
+
+//run info command to show all path or ?? displayed
+info sharedlibrary
+https://blog.csdn.net/Sunsetsea/article/details/49945649
+
+
+//input the setting to gdb
+set sysroot /localdisk/working/shilongh/8008/tmp/noe/8008/target/platform/sysroot/sysroots/dspg_dvf99-wrs-linux-gnueabi/
+set solib-search-path /localdisk/working/shilongh/8008/hg/8018_application/ictcore/ICTCore/lib:/localdisk/working/shilongh/8008/hg/8018_application/ictcore/ICTLogger/lib:/localdisk/working/shilongh/8008/hg/8018_application/ictcore/qtstatemachine/lib:/localdisk/working/shilongh/8008/hg/8018_application/shared/UpdateReport/lib:/localdisk/working/shilongh/8008/tmp/noe/8008/target/application/shared/lib:/localdisk/working/shilongh/8008/tmp/noe/8008/target/application/ictcore/lib:/localdisk/working/shilongh/8008/tmp/noe/8008/target/qt5.2.1/build/qtbase/lib
+
+set sysroot /localdisk/working/shilongh/8008/tmp/noe/8018/target/platform/sysroot/sysroots/dspg_dvf99-wrs-linux-gnueabi/
+set solib-search-path /localdisk/working/shilongh/8018/hg/8018_application/ictcore/ICTCore/lib:/localdisk/working/shilongh/8018/hg/8018_application/ictcore/ICTLogger/lib:/localdisk/working/shilongh/8018/hg/8018_application/ictcore/qtstatemachine/lib:/localdisk/working/shilongh/8018/hg/8018_application/shared/UpdateReport/lib:/localdisk/working/shilongh/8018/tmp/noe/8018/target/application/shared/lib:/localdisk/working/shilongh/8018/tmp/noe/8018/target/application/ictcore/lib:/localdisk/working/shilongh/8018/tmp/noe/8018/target/qt5.2.1/build/qtbase/lib
+
+set sysroot /localdisk/working/shilongh/80x8ee/tmp/noe/80x8ee/target/platform/sysroot/sysroots/dspg_dvf99-wrs-linux-gnueabi/
+set solib-search-path /localdisk/working/shilongh/80x8ee/hg/8018_application/ictcore/ICTCore/lib:/localdisk/working/shilongh/80x8ee/hg/8018_application/ictcore/ICTLogger/lib:/localdisk/working/shilongh/80x8ee/hg/8018_application/ictcore/qtstatemachine/lib:/localdisk/working/shilongh/80x8ee/hg/8018_application/shared/UpdateReport/lib:/localdisk/working/shilongh/80x8ee/tmp/noe/80x8ee/target/application/shared/lib:/localdisk/working/shilongh/80x8ee/tmp/noe/80x8ee/target/application/ictcore/lib:/localdisk/working/shilongh/80x8ee/tmp/noe/80x8ee/target/qt5.2.1/build/qtbase/lib
+
+
+//you can input command
+# bt（查看栈数据）==backtrace, list(show code)
+(gdb) bt
+
+
+1.	Run gdb to check core file
+Cmd:   (gdb location) (notstripped file location)  (core file location)
+Eg;
+/misc/8018_dev/8018_sdk/sysroots/x86_64-wrlinuxsdk-linux/usr/bin/armv5te-wrs-linux-gnueabi/arm-wrs-linux-gnueabi-gdb   /misc/80x8ee_dev/daily/production/noe/80x8ee/target/R410/5.35.32/2715/application/application/noemmi/bin/noemmi.notstripped  ~/22562_30_1_64_236_2019_04_07_02_17_32_core.mgr
+
+
+/misc/8018_dev/8018_sdk/sysroots/x86_64-wrlinuxsdk-linux/usr/bin/armv5te-wrs-linux-gnueabi/arm-wrs-linux-gnueabi-gdb /misc/8018_dev/daily/production/noe/8018/target/R410/5.35.32/2715/application/application/Platform/bin/Platform.notstripped 22510_30_1_64_189_2019_04_07_04_38_01_core.PlantronicHdstC 
+
+
+2.	Set environment info in GDB
+(gdb)   set sysroot /misc/80x8ee_dev/daily/production/noe/80x8ee/target/R410/5.35.32/2715/platform/sysroot/sysroots/dspg_dvf99-wrs-linux-gnueabi/
+set sysroot /misc/8018_dev/daily/production/noe/8018/target/R410/5.35.32/2715/platform/sysroot/sysroots/dspg_dvf99-wrs-linux-gnueabi/
+  
+(gdb)  
+set solib-search-path /misc/8018_dev/daily/production/noe/8018/target/R410/5.35.32/2715/application/ictcore/lib/:/misc/8018/daily/production/noe/8018/target/R410/5.35.32/2715/application/shared/lib/
+
+3.	Track in gdb
+(gdb)  thread apply all bt
+
+
+//then copy the /usr/lib/ICTApplication/ictaudio from the phone to the server44
+arm_objdump -d ictaudio > ictaudio.txt
+arm_objdump -D ictaudio > ictaudio.txt
+//then find the 0xb6337dcc in the ictaudio.txt
+
+
+ifconfig eth0 10.10.6.146 netmask 255.255.255.0
+route add default gw 10.10.6.1
+
+$ ipconfig set mode static
+#ipconfig#
+ipconfig OK
+$ ipconfig set ip 10.10.6.146
+#ipconfig#
+ipconfig OK
+$ ipconfig save
+#ipconfig#
+ipconfig OK
+$ ipconfig set mask 255.255.255.0
+#ipconfig#
+ipconfig OK
+$ 
+$ 
+$ ipconfig set route 10.10.6.1
+#ipconfig#
+ipconfig       [{set <ip_param> <value>}|<ip_param>|maincpu|maintftp|survi|save|restore]
+$ ipconfig set router 10.10.6.1
+#ipconfig#
+ipconfig OK
+$ 
+$ 
+$ ipconfig set tftp 10.10.6.141
+#ipconfig#
+ipconfig OK
+$ 
+$ 
+$ ipconfig save
+#ipconfig#
+ipconfig OK
+
+//模拟键盘输入
+key sim 7
+key sim 2
+
+
+# mount -t ubifs ubi0:NOE-SIP /tmp/
+# ls /tmp/bin/
+ash                   dbus-cleanup-sockets  dd                    false                 kill                  more                  ping6                 sleep                 touch                 vi
+busybox               dbus-daemon           df                    fgrep                 ln                    mount                 ps                    srvquery              true                  xmlparse
+cat                   dbus-launch           dmesg                 getopt                login                 mv                    pwd                   stty                  udate                 zcat
+chmod                 dbus-monitor          dnsdomainname         grep                  ls                    netstat               rm                    su                    udp_sender
+chown                 dbus-send             echo                  gunzip                mkdir                 nice                  rmdir                 sync                  umount
+cp                    dbus-session          egrep                 gzip                  mknod                 pidof                 sed                   tar                   uname
+date                  dbus-uuidgen          eth                   hostname              mktemp                ping                  sh                    tar.tar               usleep
+# cat /etc/versions 
+VersionRelease=R100
+VersionSoft=4.80.11
+VersionBuild=49
+VersionDate="Wed May 10 21:55:18 2017"
+# cat /tmp/etc/versions 
+VersionRelease=R100
+VersionSoft=4.80.11
+VersionBuild=35
+VersionDate="Wed May  3 21:59:20 2017"
+
+// led light
+# ledstate set 4 off/on
+
+Problem clear: N 
+Trace enough: N 
+Reproduced in lab: N 
+Root cause identified: N 
+Solution identified: N
+
+====Shilong Han, NOE-team, 2018/10/1===
+
+
+Problem clear: Y 
+Trace enough: Y 
+Reproduced in lab: Y 
+Root cause identified: Y 
+Solution identified: Y 
+
+Root case:  
+
+Solution: 
+
+====Shilong Han, NOE-team, 2018/10/1===
+waiting TS response
+
+Last updated: 
+Problem clear: N 
+Trace enough: N 
+Reproduced in lab: N 
+Root cause identified: N 
+Solution identified: N 
+Root case:  
+
+Solution:
+========Shilong Han, NOE-team, 2019/2/20========
+waiting TS response
+
+
+(1)	ssh terminal 
+(2)	run command “ level all debug” 
+(3) start wireshark capture
+(4)	Reproduce issue 
+(5)	Run command “getlogs.sh” 
+(6)	Get log files in folder “/log/” and “/var/log/”
+
+
+ Last update: 2019/4/9
+ Problem clear: Y 
+ Trace enough: N
+ Reproduced in lab: N
+ Root cause identified: N
+ Solution identified:  N
+ Next action: 
+
+ Root cause: 
+
+ Solution: 
+=======Shilong Han, NOE-team, 2019/4/19========
+
+
+
+
+start-stop-daemon -S -b -q -x /root/test.sh
+sleep $((RANDOM%60+90)) && reset hard
+#!/bin/sh
+#sleep 130
+#reset
+
+//mount logs to sip partion
+/etc/syslog-ng/defence.default.conf
+
+# BEGIN reset - crms00262654
+destination d_Reset { file("/sip/Reset.log"); };
+filter f_Reset { level(info..emerg) and facility(local6); };
+log { source(src); filter(f_Reset); destination(d_Reset); };
+# END reset
+
+# BEGIN defence
+destination d_Defence { file("/sip /Defence.log"); };
+filter f_Defence { level(err..emerg); };
+filter f_auth { level(info..emerg) and facility(auth, authpriv); };
+log { source(src); filter(f_Defence); destination(d_Defence); };
+log { source(src); filter(f_auth); destination(d_Defence); };
+# END defence
+
+# crms00289413 +2
+filter f_kernemerg { level(emerg) and  facility(kern); };
+log { source(srckern); filter(f_kernemerg); destination(d_Defence); };
+
+//noemmi.log, ictaudio.log
+vi /etc/syslog-ng/conf.d/logappli.conf
+
+//log startup 
+vi /etc/init.d/log
+
+case "$1" in                                             
+    start|"")                                            
+        mkdir /sip/var/log -p                                    
+        mount -t ubifs ubi0:SIP /sip                     
+        if [[ -f /usr/sbin/syslog-ng ]]; then         
+            # create directory for defence log               
+            mkdir -p $DATA_LOG_ROOT   
+
+cat /data/ICTApplication/LoggerModule/syslog/conf.d/logappli.conf
+cat /etc/rc.d/S30autoConfigSyslog
+
+# openssl x509 -in /config/cert/Customer/custom_cert.pem -noout -text
+# openssl x509 -in /config/cert/Customer/custom_pkey.pem -noout -text
+ALU terminal certificate (pub&pri)：/config/fab/cert/
+ALU CA path: /etc/trust_store
+Customer certificate(pub&pri): /config/cert/Customer/
+
+# md5sum /root/audiotune /usr/bin/audiotune 
+281a006037230352fbe58c64f17eb7c5  /root/audiotune
+2a4bc20de870286cb94e7f98d6537aa3  /usr/bin/audiotune
+
+//delete setting_hs.txt first, 
+/root/audiotune -d UT_WBHF -p setting_hs.txt
+ 
+ check if hac mode
+# hearingaid
+Set hac mode
+# hearingaid set on
+
+hs	Handset	//手柄
+hf	Handsfree mode	//免提
+he	Headset	//耳机
+hac	HAC mode	//手柄助听
+
+
+RX	//话机--数字--模拟-->喇叭
+TX	//话机<--数字--模拟--麦克风/话筒
+
+//查询内存20长度地址内容
+# css-term 
+css# memory dump 0x202e2ec 20
+
+#css-term
+    #memory dump [address of DSPA_ADDR_OFFS_EEQ_Coef_ptr] [length]
+    use SHIFT+Q to quit "css-term"
+    NOTE: the byte order of memory dump data is opposite than that we set in source code
+
+
+将当前目录下的所有文件和文件夹全部压缩成test.zip文件,-r表示递归压缩子目录下所有文件
+
+[root@mysql test]# zip -r test.zip ./*
+
+打包目录
+
+[root@mysql test]# zip test2.zip test2/*
+
+
+The HASH value generated by OXE for the password can be seen with the following command ,
+ 
+dhs3passwd –p 123456
+ 
+HASH : $1$oEFUN/lG$bBXpCt0d2OepwnstS6Qeb0
+
+openssl passwd -1 -salt 5R2UNVrH 123456
+
+
+C:\Python27\Scripts>pip install tornado --proxy 192.168.255.49:8080
+(venv) D:\python\study\commentbox\src>pip install -r requirements.txt --proxy 192.168.255.49:8080
+
+//build a new python virtualenv
+virtualenv venv
+
+//enter/activate the venv
+source venv/bin/activate
+
+D:\python\study\commentbox\src\venv\Scripts>activate.bat
+
+//exit/deactivate the venv
+deactivate
+
+//run xmanager/xstart first
+
+/usr/dt/bin/Xsession -display <workstation IP or name>:0 &
+/usr/dt/bin/Xsession -display 135.251.222.121:0 &
+
+
+[shilongh@shrd010 keyboard]$scp * shilongh@135.251.222.121:/cygdrive/d/ct/noe2g/tdm3g/noe_shared/mod/keyboard/
+scp * shilongh@135.251.222.121:/cygdrive/d/hg/8018/8018/8018_application/application/noemmi/NOE/noe_ip/mod/thales
+scp * shilongh@10.10.6.141:/cygdrive/d
+scp shilongh@172.24.190.44:/localdisk/working/shilongh/8019/*.gz .
+
+
+//psk encryption check
+# setkey -D
+
+
+//tdm command set 3MG number
+pcms
+
+
+//first mount the /vobs/noe_ua/build/B_ALL.bin
+ct setview shilongh_8019
+/users/jerryzh/tools/lauter/./t32noe 10.10.6.146
+/users/shilongh/my_tools/lauter/./t32noe 10.10.6.146
+file/batchfile
+
+//after flash success, the phone type is incorrect(always type C)
+phonemodel set B
+
+curl -o bin8008N tftp://10.10.6.141:69/bin8008N
+curl -o noe8008N tftp://10.10.6.141:69/noe8008N
+
+curl -o noe8058S tftp://30.1.107.18:69/noe8058S
+
+升级步骤：
+1.	通过OXE打开SSH，执行命令：ippstat telnet d 22504 t 1440
+2.	SSH连上话机，执行命令”config boot n”，关闭自动升级功能。然后使用”dwl”升级签名的unlock版本(http://172.24.190.44/8008_R100_release/4.80.51.unlock/)
+3.	升级完成后SSH登录话机(root用户)，执行以下命令
+Mount –t ubifs ubi0:NOE-SIP /mnt
+mount -t ubifs ubi0:NOE-SIP /mnt
+Touch /mnt/etc/unlock/root
+Umount /mnt
+Verswitch
+4.	话机启动完成后，就应该是4.80.52的破解版本了，然后把memtester放到/usr/sbin下去，确保有可执行权限
+
+
+noemgr/123qwe!@#
+
+话机退出一个已登录号码：
+*10
+
+30.1.73.8: mtcl/Pqa2018!1
+
+//OXE root
+su, password: letacla
+
+
+2017年7月1日开始，所有增值税普通发票和增值税专用发票都需提供完整的开票信息。以下为我司的开票信息：
+
+公司名称:   上海贝尔企业通信有限公司
+纳税人识别号:  913100006072690228
+地址电话:   上海市浦东新区纳贤路60号1号楼4楼021- 20599688
+开户行及账号: 中国建设银行上海第六支行 31001519300055655809
+
+steps to get logs and wireshark capture:
+(1)	ssh terminal 
+(2)	run command “ level all debug” 
+(3) start wireshark capture 
+(4)	Reproduce issue 
+(5)	Run command “getlogs.sh” 
+(6)	Get log files in folder “/log/” and “/var/log/”
+
+noemgr/noeua&ip 172.26.164.37
+/users/noemgr/jerry_8019_work/binary
+
+
+p += sprintf(p, "KBIN=0x%04x  KBON=0x%04x  KBON_OEN=0x%04x\n", kbin, kbon, kboen);
+
+小键盘 root: 上下 U R 左右
+
+//another root wu guoshun
+call SettingsManager:setSettingValue 'DmAdminPasswd' str:"000000\"; touch /etc/unlock/root; echo root:root | chpasswd # "
+
+//deny of downgrade
+8018_platform/platform_build#$make -C build upgrade.distclean
+8018_platform/platform_build#$make -C build upgrade.rebuild
+scp build/upgrade-1.0-r0/image/usr/sbin/upgrade_check root@10.10.6.146:/usr/sbin/
+
+# /usr/sbin/upgrade_check --header /root/bin8008N-header --type bin
+# /usr/sbin/upgrade_check --denydwl all --type NOE --version 5.35.13
+# /usr/sbin/upgrade_check --denydwl all --type SIP --version 1.30.20
+
+
+//if the phone reset again and again, check if dtls enable by config, if yes, you need 
+//reset flash(all configurations on the phone), then
+//change to another OXE server, 
+#config
+dtls mode         enabled
+
+//on phone or mmi to default
+#reset_flash 
+
+
+[shilongh@shrdlx32 8088]$echo 1ab3 | tr "a-z" "A-Z"    
+1AB3
+
+[shilongh@shrdlx32 8088]$echo "subject   :/DC=local/DC=osmo/CN=OSMO Anlagenbau Root CA" | sed 's|.*CN=\([^/]*\).*|\1|'                                                 
+OSMO Anlagenbau Root CA
+
+/misc/8018_shared/release/8018/NOE-R410/PDM/5.35.11.2585.20181029
+/misc/80x8ee_shared/release/80x8ee/NOE-R410/PDM
+
+
+//CE mode setting(industrial mode)
+[DEBUG]# mac set xxxxx
+[DEBUG]# sipconfig set noeswitch false
+[DEBUG]# appl mode SIP
+
+//SIP phone default passwd
+admin/123456
+
+
+//from upgrade.sh
+//get images size
+dhs3_hd_parse -f /root/bin8018N -n binary_length
+
+//print the device blocks info
+# nandblocks -D /dev/mtd0 -B
+block_max_count=8
+block_bad_count=0
+block_valid_count=8
+
+ret=$(${BINPATH}/nandblocks -D${DEV_MTD} -V${LAST_BOOT_SCAN_BLOCK})
+# nandblocks -D /dev/mtd0 -V7
+block_valid_num=7
+
+ret=$(${BINPATH}/nandblocks -D${DEV_MTD} -S${IMAGE_SIZE} -s0 -l${block_valid_num})
+# nandblocks -D /dev/mtd0 -S231288 -s0 -l8
+block_num_start=0
+block_num_next=2
+block_erase_count=2
+block_addr_start_dec=0
+block_addr_start_hex=0x0
+block_addr_next_hex=0x40000
+block_free_count=6
+
+ret=$(${BINPATH}/nandblocks -D${DEV_MTD} -d -S${IMAGE_SIZE} -s${block_valid_num} -l${limitStartBlockNext})
+# nandblocks -D /dev/mtd0 -d -S231288 -s7 -l2
+block_num_start=6
+block_num_next=8
+block_erase_count=2
+block_addr_start_dec=786432
+block_addr_start_hex=0xc0000
+block_addr_next_hex=0x100000
+block_free_count=4
+
+//replace bootloader
+1, flash_erase $DEV_MTD $bin_start_addr $bin_erase_sect
+flash_erase /dev/mtd0 786432 2
+nandwrite -m -p -s $bin_start_addr $DEV_MTD /tmp/$BIN_NAME_NEW
+2, nandwrite -m -p -s 786432 /dev/mtd0 /root/bootloader.release.img
+
+//start my https server
+D:\nodejs\nodejs-https>node app.js
+
+D:\nodejs\nodejs-https>python -m SimpleHTTPServer
+
+//simple database redis key-value
+
+D:\nodejs>redis-server
+D:\nodejs>redis-cli -h 127.0.0.1 -p 6379
+127.0.0.1:6379>               
+
+
+
+
+
+
+
+Docker study summary
+1.	docker install:
+Add a file docker.repo to /etc//etc/yum.repos.d
+ 
+
+Then run “yum install docker-engine”
+2.	Run docker:
+Cmd: “systemctl start/stop/restart/status docker” or “service docker start”
+3.	docker info:
+ 
+ 
+
+4.	Connect the docker to internet with proxy:
+Add Environment="HTTP_PROXY=http://135.251.235.16:8080/" "HTTPS_PROXY=http://135.251.235.16:8080/"
+ 
+
+Note: the docker.service is the same file you call “service start docker” or “systemctl start docker”, it is not under /etc/ as normal 
+
+5.	docker search keyword_of_image: search a image from docker hup/repositories
+ 
+
+6.	docker images: list all the images in your local host
+7.	docker pull: pull a image from docker hup
+ 
+8.	docker ps: list all the running containers on the docker
+9.	docker run: run nginx
+ 
+
+ 
+
+10.	docker rm containerID: remove a container
+11.	docker rmi imageID: remove an image
+12.	docker inspect containerID: list details of a container
+13.	docker logs containerID: display logs of a container
+14.	docker attach containerID: if you run the container with –P and the container is a Linux like system, you can access the container’s system with the attach cmd.
+15.	docker inspect containerID: list info of a continaer.
+Docker ps -a
+
+docker exec -u root -it odoo8 /bin/bash
+
+docker run -it tensorflow/tensorflow –-name mytensorflow
+
+docker start jovial_neumann
+docker exec -u root -it jovial_neumann /bin/bash
+
+
+
+
+
+https://blog.csdn.net/weixin_42273374/article/details/82144484
+
+Odoo:
+1, docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres --name db postgres:10
+
+1.1, docker run –name postgres-db -e POSTGRES_PASSWORD=abcd -d -p 5432:5432 postgres
+docker run --name postgres-db -e POSTGRES_PASSWORD=abcd -d -p 6432:5432 postgres
+
+docker run --name postgres-test -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=abcd -d -p 6432:5432 postgres
+
+docker run -p 9069:8069 -e PORT=6432 -e USER=postgres -e PASSWORD=abcd --name odoo-test --link postgres-test:db -t odoo
+
+docker run -v C:\docker_odoo_addons:/mnt/extra-addons -p 10069:8069 -e HOST=192.168.99.100 -e PORT=6432 -e USER=odoo -e PASSWORD=odoo --name odoo-test --link postgres-test:db -t odoo
+
+docker run -p 10069:8069 -e PORT=6432 -e USER=odoo -e PASSWORD=odoo --name odoo-test --link postgres-test:db -t odoo
+docker run -v /c/docker_odoo_addons:/mnt/extra-addons -p 10069:8069 -e PORT=6432 -e USER=odoo -e PASSWORD=odoo --name odoo-test2 --link postgres-test:db -t odoo
+
+docker run -p 9069:8069 -e PORT=6432 -e USER=odoo -e PASSWORD=odoo --name odoo-test --link postgres-test:db -t odoo
+docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres --name db postgres
+
+docker run -v /c/docker/odoo/addons:/mnt/extra-addons -p 8069:8069 -e HOST=192.168.99.100 -e PORT=5432 -e USER=odoo -e PASSWORD=odoo --name shilongh-odoo-test --link shilongh-postgres-test:db -t shilongh/odoo-test
+
+2, docker run -p 8069:8069 --name odoo --link db:db -t odoo
+docker stop odoo
+docker start -a odoo
+
+
+https://hub.docker.com/_/odoo/
+https://www.cnblogs.com/kfx2007/p/5461946.html
+
+https://blog.csdn.net/u013894160/article/details/54582471?utm_source=blogxgwz9
+
+//save the running container to local image
+docker commit -a "shilongh" -m "postgres-test test commit" 61e6ef7b1d66 shilongh_postgres:v1
+docker commit -a "shilongh" -m "postgres-test test commit" 61e6ef7b1d66 shilongh/postgres
+
+//login to docker hub site
+docker login
+shilongh/kodak24093913
+
+//push the local saved image to docker hub site
+docker push shilongh/postgres
+https://hub.docker.com/r/shilongh/postgres/
+
+
+//copy file to the running container
+docker cp /docker/odoo/addons/odoo_web_login-12.0.1.0.zip odoo-test:/tmp
+
+
+docker run --name shilongh-postgres-test -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -d -p 5432:5432 shilongh/postgres-test
+
+docker run --name postgres-test -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -d -p 5432:5432 shilongh/postgres-test
+
+docker run -v /c/docker/odoo/addons:/mnt/extra-addons -p 8069:8069 -e HOST=192.168.99.100 -e PORT=5432 -e USER=odoo -e PASSWORD=odoo --name odoo-test --link postgres-test:db -t shilongh/odoo-test
+
+
+
+
+//passwd office 360
+ vtwypbcyzlnffthh	
+        
+1,//find all c/h/cpp files and append to a one file        
+#find . -name "*.[c|h|cpp]" | shuf | xargs cat > noemmi.txt  
+
+2,//remove all comment in a file by notepad, replace
+In the Find & Replace Dialog, put the following regex and adjust the search options as depicted.
+
+/\*.*?\*/
+Replace with: (empty)
+
+Select Mode: Regular Expression AND .(dot) matches newline
+
+3,//注释和代码在同一行
+But For Line Comment:
+
+//.*?(?=\r?$)
+
+Explanation:
+
+// will be the Starting Position
+
+.*? Will be any character
+
+(?=\r?$) will search to the end of the line (as it is required in line comment)
+
+4，//删除空行
+notepad++
+Ctrl-H
+Select Regular Expression
+Enter ^[ \t]*$\r?\n into find what, leave replace empty. 
+This will match all lines starting with white space and ending with carriage return (in this case a windows crlf)
+Click the Find Next button to see for yourself how it matches only empty lines.
+
+
+5，//合并到同一行
+Fill in the regex (\h*\R)+ in the Find what: zone
+Fill in the regex \x20 in the Replace with: zone
+
+SEARCH \h{2,}
+REPLACE \x20
